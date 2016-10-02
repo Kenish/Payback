@@ -46,4 +46,5 @@ public class Address extends BaseEntity {
     public boolean isActive() {
         return active;
     }
+
 }

@@ -62,4 +62,5 @@ public class UserService {
         repository.saveAndFlush(user);
         return HttpStatus.CREATED;
     }
+
 }

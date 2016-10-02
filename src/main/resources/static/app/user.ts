@@ -4,5 +4,5 @@ export interface IUser{
     firstName:string;
     surname:string;
     email:string;
-    address:address[];
+    addresses:address[];
 }

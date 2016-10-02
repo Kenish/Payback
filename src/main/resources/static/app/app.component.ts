@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {IUser} from "./user";
 import {userService} from "./userService";
+import {address} from "./address";
 
 
 @Component({
@@ -17,10 +18,10 @@ import {userService} from "./userService";
             <table class='table' >
                 <thead>
                 <tr>
-                    <th>first name</th>
-                    <th>last name</th>
+                    <th>Imie</th>
+                    <th>Nazwisko</th>
                     <th>email</th>
-                    <th>address</th>
+                    <th>addresy</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -37,8 +38,12 @@ import {userService} from "./userService";
                     {{ user.email }}
                     </td>
                     
-                    <td >
-                    
+                    <td *ngFor="let address of user.addresses" >
+                    <li>kraj:{{address.country}}</li>
+                    <li>miasto:{{address.city}}</li>
+                    <li>kod pocztowy:{{address.postalCode}}</li>
+                    <li>adres:{{address.address}}</li>
+                    <li *ngIf="address.active">aktywny</li>
                     </td>
 
 
@@ -52,6 +57,7 @@ import {userService} from "./userService";
 })
 export class AppComponent implements OnInit{
     users:IUser[];
+    addresses:address[];
     constructor(private _userService:userService){
 
     }
