@@ -1,13 +1,8 @@
 package com.exercise.model;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
 
 @Entity
 public class User extends BaseEntity  {
@@ -21,8 +16,9 @@ public class User extends BaseEntity  {
     @Column(unique = true)
     private String email;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    Set<Address> addresses;
+    @OneToMany(cascade = CascadeType.PERSIST,targetEntity =Address.class)
+    @JoinColumn(name = "USER_id")
+    private Set<Address> addresses;
 
     public User(){}//jpa
 
@@ -52,5 +48,9 @@ public class User extends BaseEntity  {
 
     public String getEmail() {
         return email;
+    }
+
+    public void addAddress(Address address){
+        addresses.add(address);
     }
 }

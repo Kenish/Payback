@@ -1,22 +1,53 @@
 package com.exercise.controller;
 
+import com.exercise.model.Address;
 import com.exercise.model.User;
-import com.exercise.repository.UserRepository;
+import com.exercise.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Set;
 
 @RestController
+@RequestMapping(value = "api/users")
 public class UserController {
-    @Autowired
-    UserRepository userRepository;
+    private UserService userService;
 
-    @RequestMapping(value = "/api/user",method = RequestMethod.GET)
-    List<User> getUsers(){
-        return userRepository.findAll();
+    @Autowired
+    public UserController(UserService userService){
+        this.userService=userService;
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public List<User> getUsers(){
+        return userService.getUserList();
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public HttpStatus addUser(@RequestBody User user){
+       return userService.addUser(user);
+    }
+
+    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
+    public User getUser(@PathVariable Long id){
+        return userService.getUser(id);
+    }
+
+
+    @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
+    public HttpStatus removeUser(@PathVariable Long id){
+        return userService.deleteUser(id);
+    }
+
+    @RequestMapping(value = "/{id}/addresses",method = RequestMethod.GET)
+    public Set<Address> getAddresses(@PathVariable Long id){
+        return userService.getAddress(id);
+    }
+
+    @RequestMapping(value = "/{id}/addresses",method = RequestMethod.POST)
+    public HttpStatus getAddresses(@PathVariable Long id,@RequestBody Address address){
+        return userService.addAddress(id,address);
     }
 }

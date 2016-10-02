@@ -17,7 +17,9 @@ public class DatabaseLoader implements CommandLineRunner {
 
     @Override
     public void run(String... strings) throws Exception {
-        User user1= new User("pszemek","ste","123");
+        User user1 = new User("pszemek","ste","123");
+        User user2 = new User("natalka","w","natalkaW@gmail.com");
         userRepository.saveAndFlush(user1);
+        userRepository.saveAndFlush(user2);
     }
 }

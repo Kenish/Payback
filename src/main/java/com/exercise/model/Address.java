@@ -1,14 +1,11 @@
 package com.exercise.model;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 @Entity
 public class Address extends BaseEntity {
-    @NotNull
-    private String firstName;
-    @NotNull
-    private String lastName;
     @NotNull
     private String country;
     @NotNull
@@ -21,8 +18,6 @@ public class Address extends BaseEntity {
     private boolean active;
 
     public Address(String firstName, String lastName, String country, String city, Integer postalCode, String address) {
-        this.firstName = firstName;
-        this.lastName = lastName;
         this.country = country;
         this.city = city;
         this.postalCode = postalCode;
@@ -30,4 +25,25 @@ public class Address extends BaseEntity {
     }
 
     public Address(){}//jpa
+
+
+    public String getCountry() {
+        return country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public Integer getPostalCode() {
+        return postalCode;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
 }

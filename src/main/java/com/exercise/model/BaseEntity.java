@@ -6,8 +6,9 @@ import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
+
 @MappedSuperclass
-public abstract class BaseEntity implements Serializable {
+abstract class BaseEntity implements Serializable {
     public long getId() {
         return Id;
     }
