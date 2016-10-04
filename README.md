@@ -5,3 +5,4 @@ przykład:
 ` curl -X POST localhost:9000/api/users/1/addresses -H "Content-Type: application/json" -d '{"country":"poland","city":"warsaw","postalCode":"02516","address":"złota59"}'`
 
 aby uruchomić projekt nalezy pobrać zależności mavena oraz wykonać komendy `npm install` oraz `npm run tsc` w folderze static.
+Aplikacja może uruchamiać się nieco powolnie z racjii nieskompresowanych bibliotek w node_modules.
