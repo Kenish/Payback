@@ -1,15 +1,13 @@
 package com.exercise;
 
-import com.exercise.model.Address;
+
 import com.exercise.model.User;
 import com.exercise.repository.AddressRepository;
 import com.exercise.repository.UserRepository;
 import com.exercise.service.UserService;
-import org.hamcrest.core.Is;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
 import org.springframework.http.HttpStatus;
 
 import static org.mockito.Mockito.*;

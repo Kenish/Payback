@@ -16,7 +16,7 @@ public class User extends BaseEntity  {
     @Column(unique = true)
     private String email;
 
-    @OneToMany(cascade = CascadeType.PERSIST,targetEntity =Address.class)
+    @OneToMany(cascade = CascadeType.ALL,targetEntity =Address.class,fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_id")
     private Set<Address> addresses;
 

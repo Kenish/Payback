@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {IUser} from "./user";
 import {userService} from "./userService";
-import {address} from "./address";
 
 
 @Component({
@@ -9,7 +8,7 @@ import {address} from "./address";
     template: `
 <div class='panel panel-primary'>
     <div class='panel-heading'>
-        users
+       Users
     </div>
     
     <div class='panel-body'>
@@ -42,7 +41,7 @@ import {address} from "./address";
                     <li>kraj:{{address.country}}</li>
                     <li>miasto:{{address.city}}</li>
                     <li>kod pocztowy:{{address.postalCode}}</li>
-                    <li>adres:{{address.address}}</li>
+                    <li>adres:<b>{{address.address}}</b></li>
                     <li *ngIf="address.active">aktywny</li>
                     </td>
 
@@ -57,7 +56,6 @@ import {address} from "./address";
 })
 export class AppComponent implements OnInit{
     users:IUser[];
-    addresses:address[];
     constructor(private _userService:userService){
 
     }

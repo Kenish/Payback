@@ -17,7 +17,7 @@ public class Address extends BaseEntity {
 
     private boolean active;
 
-    public Address(String firstName, String lastName, String country, String city, Integer postalCode, String address) {
+    public Address(String country, String city, Integer postalCode, String address) {
         this.country = country;
         this.city = city;
         this.postalCode = postalCode;
@@ -47,4 +47,10 @@ public class Address extends BaseEntity {
         return active;
     }
 
+    public void setAddressInactive(){
+        active=false;
+    }
+    public void setAddressActive(){
+        active=true;
+    }
 }

@@ -56,8 +56,10 @@ public class UserService {
     }
 
     public HttpStatus addAddress(long id,Address address){
-        addressRepository.save(address);
+        address.setAddressActive();
         User user = repository.findOne(id);
+        user.getAddresses().forEach(Address::setAddressInactive);
+        addressRepository.save(address);
         user.addAddress(address);
         repository.saveAndFlush(user);
         return HttpStatus.CREATED;
